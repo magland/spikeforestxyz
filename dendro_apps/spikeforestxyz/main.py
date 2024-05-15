@@ -2,8 +2,8 @@
 
 
 from dendro.sdk import App
-from recording_summary.recording_summary import RecordingSummaryProcessor
-from mountainsort5.mountainsort5 import Mountainsort5Processor
+from recording_summary_processor.recording_summary_processor import RecordingSummaryProcessor
+from mountainsort5_processor.mountainsort5_processor import Mountainsort5Processor
 
 app = App(
     name="spikeforestxyz",
