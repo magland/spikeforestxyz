@@ -15,6 +15,12 @@ RUN pip install lindi==0.3.4
 # Install sortingview
 RUN pip install sortingview==0.13.3
 
+# Install spikeinterface-pipelines from source, for now
+RUN git clone https://github.com/SpikeInterface/spikeinterface_pipelines.git && \
+    cd spikeinterface_pipelines && \
+    # git checkout dev && \
+    pip install -e .
+
 # Copy files into the container
 RUN mkdir /app
 COPY *.py /app/

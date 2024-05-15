@@ -31,6 +31,33 @@
                 }
             ],
             "tags": []
+        },
+        {
+            "name": "spikeforestxyz.mountainsort5",
+            "description": "Run mountainsort5 spike sorting on a recording.",
+            "label": "spikeforestxyz.mountainsort5",
+            "inputs": [
+                {
+                    "name": "input",
+                    "description": "Input .nwb.lindi.json file"
+                }
+            ],
+            "inputFolders": [],
+            "outputs": [
+                {
+                    "name": "output",
+                    "description": "Output .json file"
+                }
+            ],
+            "outputFolders": [],
+            "parameters": [],
+            "attributes": [
+                {
+                    "name": "wip",
+                    "value": true
+                }
+            ],
+            "tags": []
         }
     ]
 }
