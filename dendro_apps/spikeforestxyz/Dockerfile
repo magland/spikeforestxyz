@@ -24,6 +24,9 @@ RUN git clone https://github.com/SpikeInterface/spikeinterface_pipelines.git && 
     # git checkout dev && \
     pip install -e .
 
+# Install mountainsort5
+RUN pip install mountainsort5==0.5.6
+
 # Copy files into the container
 RUN mkdir /app
 COPY *.py /app/

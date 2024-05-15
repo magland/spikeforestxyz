@@ -42,6 +42,7 @@ def create_recording_summaries():
             ),
             run_method='local'
         )
+        break
 
 
 if __name__ == "__main__":
