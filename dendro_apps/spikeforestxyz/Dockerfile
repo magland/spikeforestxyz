@@ -1,5 +1,8 @@
 FROM python:3.9-slim
 
+# Install git
+RUN apt-get update && apt-get install -y git
+
 # Install dendro
 RUN pip install dendro==0.2.15
 
