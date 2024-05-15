@@ -30,5 +30,6 @@ RUN pip install mountainsort5==0.5.6
 # Copy files into the container
 RUN mkdir /app
 COPY *.py /app/
-COPY recording_summary/*.py /app/recording_summary/
-COPY recording_summary/helpers/*.py /app/recording_summary/helpers/
+COPY recording_summary_processor/*.py /app/recording_summary_processor/
+COPY recording_summary/helpers_processor/*.py /app/recording_summary_processor/helpers/
+COPY mountainsort5_processor/*.py /app/mountainsort5_processor/
