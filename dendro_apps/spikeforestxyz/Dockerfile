@@ -24,6 +24,9 @@ RUN git clone https://github.com/SpikeInterface/spikeinterface_pipelines.git && 
     # git checkout dev && \
     pip install -e .
 
+# Install neuroconv
+RUN pip install neuroconv==0.4.8
+
 # Install mountainsort5
 RUN pip install mountainsort5==0.5.6
 
