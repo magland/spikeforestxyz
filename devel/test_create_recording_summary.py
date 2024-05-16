@@ -2,7 +2,7 @@ import sys
 import os
 thispath = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(thispath, '..'))
-from dendro_apps.spikeforestxyz.recording_summary.create_recording_summary import create_recording_summary
+from dendro_apps.spikeforestxyz.recording_summary_processor.create_recording_summary import create_recording_summary
 
 
 def test_create_recording_summary():
