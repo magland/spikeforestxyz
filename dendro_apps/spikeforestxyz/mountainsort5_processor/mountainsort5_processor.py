@@ -1,3 +1,4 @@
+import os
 from dendro.sdk import ProcessorBase, InputFile, OutputFile
 from dendro.sdk import BaseModel, Field
 
@@ -22,8 +23,11 @@ class Mountainsort5Processor(ProcessorBase):
         print('Downloading input file')
         context.input.download(output_fname)
         print('Running mountainsort5')
+        cache_dir = os.path.join(os.getcwd(), 'local_cache')
+        os.makedirs(cache_dir, exist_ok=True)
         run_mountainsort5(
-            output_fname
+            output_fname,
+            cache_dir=cache_dir
         )
         print('Uploading output file')
         context.output.upload(output_fname)

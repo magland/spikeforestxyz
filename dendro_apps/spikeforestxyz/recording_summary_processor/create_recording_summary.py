@@ -1,3 +1,4 @@
+from typing import Union
 import time
 import uuid
 import shutil
@@ -10,14 +11,16 @@ from .helpers.compute_correlogram_data import compute_correlogram_data
 
 
 def create_recording_summary(
-    nwb_lindi_fname: str
+    nwb_lindi_fname: str,
+    *,
+    cache_dir: Union[str, None] = None
 ):
     staging_area = lindi.StagingArea.create(dir=nwb_lindi_fname + '.d')
     f = lindi.LindiH5pyFile.from_lindi_file(
         nwb_lindi_fname,
         mode='r+',
         staging_area=staging_area,
-        local_cache=lindi.LocalCache()
+        local_cache=lindi.LocalCache(cache_dir=cache_dir) if cache_dir is not None else None,
     )
     # rec = NwbRecordingExtractor(h5py_file=f)  # type: ignore
     # sorting_true = NwbSortingExtractor(h5py_file=f)  # type: ignore

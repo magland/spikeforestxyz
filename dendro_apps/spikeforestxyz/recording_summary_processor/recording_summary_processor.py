@@ -1,3 +1,4 @@
+import os
 from dendro.sdk import ProcessorBase, InputFile, OutputFile
 from dendro.sdk import BaseModel, Field
 
@@ -20,7 +21,10 @@ class RecordingSummaryProcessor(ProcessorBase):
 
         output_fname = 'output.nwb.lindi.json'
         context.input.download(output_fname)
+        cache_dir = os.path.join(os.getcwd(), 'local_cache')
+        os.makedirs(cache_dir, exist_ok=True)
         create_recording_summary(
-            output_fname
+            output_fname,
+            cache_dir=cache_dir
         )
         context.output.upload(output_fname)

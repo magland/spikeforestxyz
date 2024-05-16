@@ -1,3 +1,4 @@
+from typing import Union
 import shutil
 import lindi
 import kachery_cloud as kcl
@@ -9,7 +10,9 @@ from neuroconv.tools.spikeinterface import write_sorting
 
 
 def run_mountainsort5(
-    nwb_lindi_fname: str
+    nwb_lindi_fname: str,
+    *,
+    cache_dir: Union[str, None] = None
 ):
     print('Running MountainSort5 on', nwb_lindi_fname)
     staging_area = lindi.StagingArea.create(dir=nwb_lindi_fname + '.d')
@@ -17,7 +20,7 @@ def run_mountainsort5(
         nwb_lindi_fname,
         mode='r+',
         staging_area=staging_area,
-        local_cache=lindi.LocalCache()
+        local_cache=lindi.LocalCache(cache_dir=cache_dir) if cache_dir is not None else None,
     )
     rec = NwbRecordingExtractor(h5py_file=f)  # type: ignore
 
