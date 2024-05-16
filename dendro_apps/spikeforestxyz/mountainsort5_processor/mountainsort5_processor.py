@@ -19,8 +19,12 @@ class Mountainsort5Processor(ProcessorBase):
         from .run_mountainsort5 import run_mountainsort5
 
         output_fname = 'output.nwb.lindi.json'
+        print('Downloading input file')
         context.input.download(output_fname)
+        print('Running mountainsort5')
         run_mountainsort5(
             output_fname
         )
+        print('Uploading output file')
         context.output.upload(output_fname)
+        print('Done')

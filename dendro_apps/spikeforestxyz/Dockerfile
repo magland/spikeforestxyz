@@ -4,7 +4,7 @@ FROM python:3.9-slim
 RUN apt-get update && apt-get install -y git
 
 # Install dendro
-RUN pip install dendro==0.2.15
+RUN pip install dendro==0.2.17
 
 # Install kachery-cloud
 RUN pip install kachery-cloud==0.4.9

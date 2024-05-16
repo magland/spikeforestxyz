@@ -11,6 +11,7 @@ from neuroconv.tools.spikeinterface import write_sorting
 def run_mountainsort5(
     nwb_lindi_fname: str
 ):
+    print('Running MountainSort5 on', nwb_lindi_fname)
     staging_area = lindi.StagingArea.create(dir=nwb_lindi_fname + '.d')
     f = lindi.LindiH5pyFile.from_lindi_file(
         nwb_lindi_fname,
@@ -33,6 +34,7 @@ def run_mountainsort5(
 
     visualization_params = si_pipeline.VisualizationParams()
 
+    print('Running the pipeline')
     rec_pre, sorting, we, sc, vo = si_pipeline.run_pipeline(
         recording=rec,
         scratch_folder='./scratch/',
@@ -49,8 +51,10 @@ def run_mountainsort5(
         run_curation=False,
         run_visualization=False
     )
+    print('Pipeline finished')
     assert isinstance(sorting, si.BaseSorting)
 
+    print('Writing the sorting to the NWB file')
     with pynwb.NWBHDF5IO(file=f, mode='r+') as io:
         nwb = io.read()
         write_sorting(
@@ -59,7 +63,10 @@ def run_mountainsort5(
             write_as='processing',
             units_name='mountainsort5_units'
         )
+        print('Writing the NWB file')
+        io.write(nwb)  # type: ignore
 
+    print('Writing changes to the file')
     f.flush()  # write changes to the file
 
     def on_store_blob(filename: str):
@@ -77,3 +84,4 @@ def run_mountainsort5(
         on_upload_blob=on_store_blob,
         on_upload_main=on_store_main
     )
+    print('Done uploading supporting files')
