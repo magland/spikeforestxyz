@@ -12,8 +12,11 @@ RUN pip install kachery-cloud==0.4.9
 # Install spikeinterface
 RUN pip install spikeinterface==0.100.6
 
-# Install lindi
-RUN pip install lindi==0.3.4
+# Install lindi from source
+RUN git clone https://github.com/neurodatawithoutborders/lindi.git && \
+    cd lindi && \
+    git checkout dev10 && \
+    pip install -e .
 
 # Install sortingview
 RUN pip install sortingview==0.13.3
