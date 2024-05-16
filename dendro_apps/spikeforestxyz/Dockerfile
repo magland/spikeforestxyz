@@ -15,7 +15,7 @@ RUN pip install spikeinterface==0.100.6
 # Install lindi from source
 RUN git clone https://github.com/neurodatawithoutborders/lindi.git && \
     cd lindi && \
-    git checkout dev10 && echo "4" && \
+    git checkout dev10 && echo "5" && \
     pip install -e .
 
 # Install sortingview
